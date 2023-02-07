@@ -16,3 +16,5 @@ When we change the dotfiles in any way -- as tracked by git in this repo -- we c
 This command creates a symlink from our repo to the target path on our home machine.
 
 To stow all files at once, run `stow */` to get only directories not the readme.
+
+If there are files that already exist in the target prior to running stow, you must run `stow --adopt <utility>` so that the symlink is correctly initialized -- more on this in the manpage of stow.
