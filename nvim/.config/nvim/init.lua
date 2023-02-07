@@ -131,6 +131,10 @@ vim.wo.signcolumn = 'yes'
 -- Set colorscheme
 vim.o.termguicolors = true
 -- vim.cmd [[colorscheme onedark]]
+require('tokyonight').setup({
+  style = "storm",
+  transparent = true,
+})
 vim.cmd [[colorscheme tokyonight]]
 
 -- Set completeopt to have a better completion experience
