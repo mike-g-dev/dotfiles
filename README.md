@@ -21,4 +21,17 @@ If there are files that already exist in the target prior to running stow, you m
 
 # TODOS
 - [ ] move packer setup + sync logic out of init.lua and into plugin-setup.lua
+	- [x] treesitter
+	- [x] telescope
+	- [ ] packer
+	- [ ] nvim-tree
+	- [ ] lualine
+	- [ ] gitsigns
+	- [ ] harpoon (still need to use this)
+	- [ ] indent_blankline
+	- [ ] colorscheme (tokyonight)
+	- [ ] comment
+- [ ] modularize LSP config
 - [ ] create configuration files for each plugin under `lua/plugins/`
+- [ ] find the correct place for autogroups
+- [ ] add /plugins directory with packer_compiled.lua to git repo 
