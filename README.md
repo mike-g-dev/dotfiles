@@ -24,13 +24,13 @@ If there are files that already exist in the target prior to running stow, you m
 	- [x] treesitter
 	- [x] telescope
 	- [ ] packer
-	- [ ] nvim-tree
-	- [ ] lualine
-	- [ ] gitsigns
+	- [x] nvim-tree
+	- [x] lualine
+	- [x] gitsigns
 	- [ ] harpoon (still need to use this)
-	- [ ] indent_blankline
+	- [x] indent_blankline
 	- [ ] colorscheme (tokyonight)
-	- [ ] comment
+	- [x] comment
 - [ ] modularize LSP config
 - [ ] create configuration files for each plugin under `lua/plugins/`
 - [ ] find the correct place for autogroups
