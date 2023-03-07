@@ -20,6 +20,8 @@ To stow all files at once, run `stow */` to get only directories not the readme.
 If there are files that already exist in the target prior to running stow, you must run `stow --adopt <utility>` so that the symlink is correctly initialized -- more on this in the manpage of stow.
 
 # TODOS
+
+## nvim
 - [ ] move packer setup + sync logic out of init.lua and into plugin-setup.lua
 	- [x] treesitter
 	- [x] telescope
