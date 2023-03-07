@@ -11,6 +11,10 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
   use 'folke/tokyonight.nvim'
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -202,7 +206,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       diagnostics = {
         globals = { 'vim' }
