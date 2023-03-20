@@ -112,8 +112,7 @@ require('tokyonight').setup({
   style = "storm",
   transparent = true,
 })
-vim.cmd [[colorscheme tokyonight]]
-
+require("core.colorscheme")
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
