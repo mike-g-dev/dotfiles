@@ -71,6 +71,21 @@ require('packer').startup(function(use)
 
   use { 'gelguy/wilder.nvim' }
 
+  -- Tmux
+  use { 'alexghergh/nvim-tmux-navigation', config = function()
+    require 'nvim-tmux-navigation'.setup {
+      disable_when_zoomed = true,       -- defaults to false
+      keybindings = {
+        left = "<C-h>",
+        down = "<C-j>",
+        up = "<C-k>",
+        right = "<C-l>",
+        last_active = "<C-\\>",
+        next = "<C-Space>",
+      }
+    }
+  end
+  }
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
