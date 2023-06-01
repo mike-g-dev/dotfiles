@@ -63,6 +63,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  dockerls = {},
 }
 
 -- Setup neovim lua configuration
