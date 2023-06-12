@@ -23,7 +23,7 @@ require('packer').startup(function(use)
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
+      { 'j-hui/fidget.nvim', tag = 'legacy' },
 
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
@@ -74,7 +74,7 @@ require('packer').startup(function(use)
   -- Tmux
   use { 'alexghergh/nvim-tmux-navigation', config = function()
     require 'nvim-tmux-navigation'.setup {
-      disable_when_zoomed = true,       -- defaults to false
+      disable_when_zoomed = true, -- defaults to false
       keybindings = {
         left = "<C-h>",
         down = "<C-j>",
