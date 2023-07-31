@@ -65,6 +65,7 @@ local servers = {
   },
   dockerls = {},
   nil_ls = {},
+  ocamllsp = {},
 }
 
 -- Setup neovim lua configuration
