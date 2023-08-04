@@ -69,8 +69,6 @@ require('packer').startup(function(use)
   -- File tree
   use { 'nvim-tree/nvim-tree.lua' }
 
-  use { 'gelguy/wilder.nvim' }
-
   -- Tmux
   use { 'alexghergh/nvim-tmux-navigation', config = function()
     require 'nvim-tmux-navigation'.setup {
