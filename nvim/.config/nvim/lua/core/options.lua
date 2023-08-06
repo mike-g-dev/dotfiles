@@ -37,3 +37,4 @@ vim.o.termguicolors = true
 vim.o.completeopt = 'menuone,noselect'
 
 vim.o.scrolloff = 8
+vim.o.tabstop = 4

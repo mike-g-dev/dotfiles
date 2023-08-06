@@ -9,7 +9,6 @@ if [ -z $selected ]; then
 fi
 
 session_name=$(basename $selected)
-tmux_running=$(pgrep tmux)
 
 # not in tmux, just create or attach 
 if [ -z $TMUX ]; then
