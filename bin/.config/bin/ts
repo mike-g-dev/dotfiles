@@ -12,8 +12,8 @@ session_name=$(basename $selected)
 tmux_running=$(pgrep tmux)
 
 # not in tmux, just create or attach 
-if [ -z $TMUX ] && [ -z $tmux_running ]; then
-	tmux new-session -c $selected -s $session_name
+if [ -z $TMUX ]; then
+	tmux new-session -A -c $selected -s $session_name
 	exit 0
 fi 
 
