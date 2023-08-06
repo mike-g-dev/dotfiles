@@ -29,7 +29,6 @@ If there are files that already exist in the target prior to running stow, you m
 	- [x] nvim-tree
 	- [x] lualine
 	- [x] gitsigns
-	- [ ] harpoon (still need to use this)
 	- [x] indent_blankline
 	- [x] colorscheme (tokyonight)
 	- [x] comment
