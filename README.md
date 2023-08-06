@@ -18,21 +18,3 @@ This command creates a symlink from our repo to the target path on our home mach
 To stow all files at once, run `stow */` to get only directories not the readme.
 
 If there are files that already exist in the target prior to running stow, you must run `stow --adopt <utility>` so that the symlink is correctly initialized -- more on this in the manpage of stow.
-
-# TODOS
-
-## nvim
-- [x] move packer setup + sync logic out of init.lua and into plugin-setup.lua
-	- [x] treesitter
-	- [x] telescope
-	- [x] packer
-	- [x] nvim-tree
-	- [x] lualine
-	- [x] gitsigns
-	- [x] indent_blankline
-	- [x] colorscheme (tokyonight)
-	- [x] comment
-- [x] modularize LSP config
-- [x] create configuration files for each plugin under `lua/plugins/`
-- [x] find the correct place for autogroups
-- [x] add /plugins directory with packer_compiled.lua to git repo 
