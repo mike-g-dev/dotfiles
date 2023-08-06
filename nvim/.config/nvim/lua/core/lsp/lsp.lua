@@ -94,6 +94,7 @@ local null_ls_config = {
   debug = false,
   sources = {
     null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
+    null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.diagnostics.flake8
