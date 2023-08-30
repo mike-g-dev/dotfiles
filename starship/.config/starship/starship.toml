@@ -1,0 +1,15 @@
+[fill]
+symbol = " "
+
+[character]
+format = '$symbol '
+
+[line_break]
+disabled = false
+
+[directory]
+truncation_length = 1
+fish_style_pwd_dir_length = 1
+
+[package]
+disabled = true
