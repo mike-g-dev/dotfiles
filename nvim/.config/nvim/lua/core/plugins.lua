@@ -17,7 +17,18 @@ local plugins = {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   },
-  'folke/tokyonight.nvim',
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('tokyonight').setup({
+        style = 'storm',
+        transparent = true
+      })
+      vim.cmd [[colorscheme tokyonight]]
+    end
+  },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
