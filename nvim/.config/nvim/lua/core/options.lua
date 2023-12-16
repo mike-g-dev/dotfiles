@@ -1,6 +1,3 @@
--- [[ Setting options ]]
--- See `:help vim.o`
-
 -- Disable netrw as per nvim-tree request
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

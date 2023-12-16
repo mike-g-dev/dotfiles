@@ -190,7 +190,6 @@ local plugins = {
       }
     end
   },
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
   {
     'nvim-lualine/lualine.nvim',
     config = function()
@@ -293,7 +292,20 @@ local plugins = {
         }
       }
     end
-  }
+  },
+  {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup()
+    end
+  },
+  {
+    'folke/neodev.nvim',
+    config = function()
+      require('neodev').setup()
+    end
+  },
+  'navarasu/onedark.nvim', -- Theme inspired by Atom
 }
 
 local opts = {}
