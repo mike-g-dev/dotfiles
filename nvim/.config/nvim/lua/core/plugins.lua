@@ -121,9 +121,16 @@ local plugins = {
       }
     end
   },
-  'navarasu/onedark.nvim',               -- Theme inspired by Atom
-  'nvim-lualine/lualine.nvim',           -- Fancier statusline
-  'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
+  'navarasu/onedark.nvim',     -- Theme inspired by Atom
+  'nvim-lualine/lualine.nvim', -- Fancier statusline
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('ibl').setup {
+        indent = { char = '┊' },
+      }
+    end
+  }, -- Add indentation guides even on blank lines
   {
     'numToStr/Comment.nvim',
     config = function()
