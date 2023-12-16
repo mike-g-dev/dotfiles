@@ -170,8 +170,12 @@ local plugins = {
     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
   -- File tree
-  { 'nvim-tree/nvim-tree.lua' },
-
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require("nvim-tree").setup()
+    end
+  },
   -- Tmux
   {
     'alexghergh/nvim-tmux-navigation',
