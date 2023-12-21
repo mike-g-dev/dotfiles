@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
@@ -29,17 +29,12 @@ local plugins = {
       vim.cmd [[colorscheme tokyonight]]
     end
   },
-  { -- LSP Configuration & Plugins
+  {
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-
-      -- ful status updates for LSP
       { 'j-hui/fidget.nvim', tag = 'legacy' },
-
-      -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
     },
   },
@@ -368,7 +363,8 @@ local plugins = {
       require('neodev').setup()
     end
   },
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
+  'navarasu/onedark.nvim',
+  'craftzdog/solarized-osaka.nvim'
 }
 
 local opts = {}
