@@ -1,20 +1,7 @@
 return {
-	'folke/lazy.nvim',
 	{
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end
-	},
-	{
-		'folke/tokyonight.nvim',
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require('tokyonight').setup({
-				style = 'storm',
-				transparent = true
-			})
-			vim.cmd [[colorscheme tokyonight]]
-		end
 	},
 	{
 		'neovim/nvim-lspconfig',
@@ -293,7 +280,7 @@ return {
 		config = function()
 			require('Comment').setup()
 		end
-	},            -- "gc" to comment visual regions/lines
+	},               -- "gc" to comment visual regions/lines
 	'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 	-- Fuzzy Finder (files, lsp, etc)
 	{
@@ -329,10 +316,10 @@ return {
 			vim.keymap.set('n', '<leader>/', function()
 				-- You can pass additional configuration to telescope to change theme, layout, etc.
 				require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes')
-				.get_dropdown {
-					winblend = 10,
-					previewer = false,
-				})
+					.get_dropdown {
+						winblend = 10,
+						previewer = false,
+					})
 			end, { desc = '[/] Fuzzily search in current buffer]' })
 
 			vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files,
@@ -388,6 +375,4 @@ return {
 			require('neodev').setup()
 		end
 	},
-	'navarasu/onedark.nvim',
-	'craftzdog/solarized-osaka.nvim'
 }
