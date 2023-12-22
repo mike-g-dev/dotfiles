@@ -1,9 +1,5 @@
 return {
 	{
-		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end
-	},
-	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			'williamboman/mason.nvim',
