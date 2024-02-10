@@ -1,10 +1,11 @@
 return {
 	'nvim-lualine/lualine.nvim',
 	config = function()
+		local colorscheme = vim.g.colors_name
 		require('lualine').setup {
 			options = {
 				icons_enabled = true,
-				theme = 'tokyonight',
+				theme = colorscheme,
 				component_separators = '|',
 				section_separators = '',
 			},
