@@ -3,7 +3,7 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "neovim/nvim-lspconfig"
+    "neovim/nvim-lspconfig",
   },
   config = function()
     require("mason").setup()
@@ -16,11 +16,18 @@ return {
         "pyright",
         "rust_analyzer",
         "clangd",
+        "cmake",
         "dockerls",
+        "docker_compose_language_service",
         "bashls",
-        "terraformls"
-      }
-
+        "terraformls",
+        "yamlls",
+        "jsonls",
+        "nil_ls",
+        "tsserver",
+        "ocamllsp",
+        "html",
+      },
     })
 
     local mason_tool_installer = require("mason-tool-installer")
@@ -31,8 +38,8 @@ return {
         "isort",
         "black",
         "clang-format",
-        "rustfmt"
-      }
+        "rustfmt",
+      },
     })
-  end
+  end,
 }
