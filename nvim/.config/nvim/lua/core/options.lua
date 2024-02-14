@@ -2,38 +2,42 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Large cursor
+vim.opt.guicursor = ""
+
 -- Set highlight on search
-vim.o.hlsearch = false
-vim.o.incsearch = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
 -- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.nu = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Decrease update time
-vim.o.updatetime = 50
-vim.wo.signcolumn = 'yes'
+vim.opt.updatetime = 50
+vim.opt.signcolumn = "yes"
 
 -- Set colorscheme
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.completeopt = "menuone,noselect"
 
-vim.o.scrolloff = 8
+vim.opt.scrolloff = 8
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
