@@ -25,6 +25,12 @@ return {
           "dockerfile",
           "gitignore",
           "markdown",
+          "html",
+          "lua",
+          "make",
+          "proto",
+          "toml",
+          "sql",
         },
 
         highlight = { enable = true },

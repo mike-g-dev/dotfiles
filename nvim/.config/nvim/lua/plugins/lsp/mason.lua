@@ -27,6 +27,8 @@ return {
         "tsserver",
         "ocamllsp",
         "html",
+        "cssls",
+        "tailwindcss",
       },
     })
 
@@ -39,6 +41,8 @@ return {
         "black",
         "clang-format",
         "rustfmt",
+        "eslint_d",
+        "prettier"
       },
     })
   end,

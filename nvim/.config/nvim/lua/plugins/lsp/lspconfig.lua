@@ -70,6 +70,8 @@ return {
       tsserver = {},
       ocamllsp = {},
       html = {},
+      cssls = {},
+      tailwindcss = {},
     }
 
     -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
