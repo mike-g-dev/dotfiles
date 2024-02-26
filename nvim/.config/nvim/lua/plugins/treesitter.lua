@@ -7,6 +7,7 @@ return {
         ensure_installed = {
           "c",
           "cpp",
+          "zig",
           "go",
           "lua",
           "python",

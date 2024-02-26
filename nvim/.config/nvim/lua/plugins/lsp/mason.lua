@@ -29,6 +29,7 @@ return {
         "html",
         "cssls",
         "tailwindcss",
+        "zls"
       },
     })
 
