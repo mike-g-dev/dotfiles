@@ -72,6 +72,7 @@ return {
       html = {},
       cssls = {},
       tailwindcss = {},
+      zls = {},
     }
 
     -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
