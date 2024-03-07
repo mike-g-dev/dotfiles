@@ -36,7 +36,7 @@ return {
 						winblend = 10,
 						previewer = false,
 					})
-			end, { desc = '[/] Fuzzily search in current buffer]' })
+			end, { desc = '[/] Fuzzily search in current buffer' })
 
 			vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files,
 				{ desc = '[S]earch [F]iles' })
