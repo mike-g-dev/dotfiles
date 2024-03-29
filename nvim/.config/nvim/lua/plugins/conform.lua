@@ -18,6 +18,11 @@ return {
         yaml = { "prettier" },
         markdown = { "prettier" },
       },
+      formatters = {
+        rustfmt = {
+          command = "/Users/dev/.cargo/bin/rustfmt"
+        }
+      }
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>f", function()

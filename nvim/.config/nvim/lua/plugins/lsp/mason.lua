@@ -41,7 +41,6 @@ return {
         "isort",
         "black",
         "clang-format",
-        "rustfmt",
         "eslint_d",
         "prettier"
       },
