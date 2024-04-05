@@ -13,3 +13,13 @@ fish_style_pwd_dir_length = 1
 
 [package]
 disabled = true
+
+[docker_context]
+disabled = true
+
+[python]
+pyenv_version_name = true
+pyenv_prefix = ""
+
+[aws]
+disabled = true
