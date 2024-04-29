@@ -41,9 +41,6 @@ return {
       nmap("<leader>wl", function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, "[W]orkspace [L]ist Folders")
-
-      -- TODO make this work
-      nmap("F", ":Format<CR>", "[F]ormat current buffer with Conform or LSP")
     end
 
     local servers = {
