@@ -29,7 +29,7 @@ return {
         "html",
         "cssls",
         "tailwindcss",
-        "zls"
+        "zls",
       },
     })
 
@@ -42,7 +42,7 @@ return {
         "black",
         "clang-format",
         "eslint_d",
-        "prettier"
+        "prettier",
       },
     })
   end,

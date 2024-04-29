@@ -20,9 +20,9 @@ return {
       },
       formatters = {
         rustfmt = {
-          command = "/Users/dev/.cargo/bin/rustfmt"
-        }
-      }
+          command = "/Users/dev/.cargo/bin/rustfmt",
+        },
+      },
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>f", function()
