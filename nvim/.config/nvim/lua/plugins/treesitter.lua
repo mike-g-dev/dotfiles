@@ -21,6 +21,7 @@ return {
           "bash",
           "swift",
           "terraform",
+          "hcl",
           "yaml",
           "json",
           "dockerfile",

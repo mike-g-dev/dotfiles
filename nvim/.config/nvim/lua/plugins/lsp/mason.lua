@@ -4,9 +4,14 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "neovim/nvim-lspconfig",
+    "jay-babu/mason-nvim-dap.nvim",
   },
   config = function()
     require("mason").setup()
+
+    require("mason-nvim-dap").setup({
+      ensure_installed = { "debugpy", "codelldb" },
+    })
 
     local mason_lspconfig = require("mason-lspconfig")
 
