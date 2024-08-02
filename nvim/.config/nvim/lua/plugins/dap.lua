@@ -12,13 +12,6 @@ return {
 
     dapui.setup()
 
-    -- TODO: realistically, I would like to configure LSP and DAP for each language I use in one place...
-    -- TODO: this also loads when you open neovim and makes no sense
-    -- unless we are in a python project...
-    local python = vim.fn.getcwd() .. "/venv/bin/python"
-    print(python)
-    require("dap-python").setup(python)
-
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end
