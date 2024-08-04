@@ -47,3 +47,7 @@ vim.opt.smartindent = true
 
 -- No swapfiles
 vim.opt.swapfile = false
+
+-- Spellchecking
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
