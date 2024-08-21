@@ -35,6 +35,7 @@ return {
         "cssls",
         "tailwindcss",
         "zls",
+        "gopls",
       },
     })
 
