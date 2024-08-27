@@ -44,7 +44,7 @@ return {
     priority = 1000,
     config = function()
       require("onedark").setup({
-        style = "deep",
+        style = "warm",
         transparent = true,
         code_style = {
           comments = "italic",
