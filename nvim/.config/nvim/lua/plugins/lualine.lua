@@ -10,7 +10,8 @@ return {
         section_separators = "",
       },
       sections = {
-        lualine_a = {
+        lualine_q = { "mode" },
+        lualine_b = {
           "buffers",
         },
       },
