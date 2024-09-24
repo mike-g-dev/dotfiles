@@ -38,6 +38,15 @@ return {
   --     vim.cmd([[colorscheme mellow]])
   --   end,
   -- },
+  -- {
+  --   "vague2k/vague.nvim",
+  --   config = function()
+  --     require("vague").setup({
+  --       transparent = true,
+  --     })
+  --     vim.cmd([[colorscheme vague]])
+  --   end,
+  -- },
   {
     "navarasu/onedark.nvim",
     lazy = false,
