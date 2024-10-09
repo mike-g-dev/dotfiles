@@ -49,6 +49,7 @@ return {
         "clang-format",
         "eslint_d",
         "prettier",
+        "delve"
       },
     })
   end,
