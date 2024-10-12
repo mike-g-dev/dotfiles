@@ -49,7 +49,8 @@ return {
         "clang-format",
         "eslint_d",
         "prettier",
-        "delve"
+        "delve",
+        "golines",
       },
     })
   end,
