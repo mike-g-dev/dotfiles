@@ -36,7 +36,7 @@ return {
         },
 
         highlight = { enable = true },
-        indent = { enable = true, disable = { "python" } },
+        indent = { enable = true, disable = { "python", "go" } },
         incremental_selection = {
           enable = true,
           keymaps = {

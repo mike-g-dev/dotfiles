@@ -17,6 +17,7 @@ return {
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
+        go = { "gofmt" },
       },
       formatters = {
         rustfmt = {
