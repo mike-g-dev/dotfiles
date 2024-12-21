@@ -29,7 +29,7 @@ return {
         "yamlls",
         "jsonls",
         "nil_ls",
-        "tsserver",
+        "ts_ls",
         "ocamllsp",
         "html",
         "cssls",
