@@ -71,9 +71,8 @@ return {
       tailwindcss = {},
       zls = {},
       gopls = {},
+      clojure_lsp = {}
     }
-
-    -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     for server_name, settings in pairs(servers) do
       lspconfig[server_name].setup({

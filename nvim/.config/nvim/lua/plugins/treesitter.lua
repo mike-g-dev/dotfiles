@@ -33,6 +33,7 @@ return {
           "proto",
           "toml",
           "sql",
+          "clojure"
         },
 
         highlight = { enable = true },
