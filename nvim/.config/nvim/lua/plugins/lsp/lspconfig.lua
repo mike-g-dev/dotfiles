@@ -29,6 +29,10 @@ return {
       nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
       nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
       nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+      vim.keymap.set("n", "gK", function()
+        local new_config = not vim.diagnostic.config().virtual_lines
+        vim.diagnostic.config({ virtual_lines = new_config })
+      end, { desc = "Toggle diagnostic virtual_lines" })
 
       -- See `:help K` for why this keymap
       nmap("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -71,7 +75,7 @@ return {
       tailwindcss = {},
       zls = {},
       gopls = {},
-      clojure_lsp = {}
+      clojure_lsp = {},
     }
 
     for server_name, settings in pairs(servers) do
