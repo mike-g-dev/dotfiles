@@ -52,6 +52,7 @@ return {
         "prettier",
         "delve",
         "golines",
+        "nixpkgs-fmt"
       },
     })
   end,
