@@ -2,7 +2,7 @@
 #
 # This script allows for creation and attaching
 # to tmux sessions with a fuzzy finding entrypoint.
-selected=$(find ~ ~/random ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$(find ~ ~/oss ~/random ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
 
 if [ -z $selected ]; then
 	exit 0
