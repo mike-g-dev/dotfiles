@@ -75,7 +75,6 @@ return {
       tailwindcss = {},
       zls = {},
       gopls = {},
-      clojure_lsp = {},
     }
 
     for server_name, settings in pairs(servers) do

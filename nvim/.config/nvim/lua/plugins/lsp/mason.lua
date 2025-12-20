@@ -36,7 +36,6 @@ return {
         "tailwindcss",
         "zls",
         "gopls",
-        "clojure_lsp"
       },
     })
 
