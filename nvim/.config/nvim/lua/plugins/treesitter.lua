@@ -35,6 +35,7 @@ return {
           "proto",
           "toml",
           "sql",
+          "cue",
         },
         highlight = {
           enable = true, -- Enable syntax highlighting

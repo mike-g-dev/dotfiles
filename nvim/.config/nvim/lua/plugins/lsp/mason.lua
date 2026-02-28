@@ -20,6 +20,7 @@ return {
         "cssls",
         "tailwindcss",
         "zls",
+        "cue",
       },
     },
     dependencies = {
