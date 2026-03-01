@@ -21,6 +21,7 @@ return {
         "tailwindcss",
         "zls",
         "cue",
+        "gopls"
       },
     },
     dependencies = {
