@@ -18,6 +18,7 @@ return {
         yaml = { "prettier" },
         markdown = { "prettier" },
         go = { "gofmt", "golines" },
+        nix = { "nixfmt" }
       },
       formatters = {
         rustfmt = {
