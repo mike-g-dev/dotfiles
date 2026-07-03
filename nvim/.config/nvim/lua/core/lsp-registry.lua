@@ -41,90 +41,45 @@ local function capabilities()
   return caps
 end
 
-local function server_bin(server)
-  local cfg = vim.lsp.config[server]
-  if not cfg then
-    return nil, nil
-  end
-  local bin
-  if type(cfg.cmd) == "table" then
-    bin = cfg.cmd[1]
-  end
-  return bin, cfg.filetypes
-end
-
-local function enable(server)
-  local ok, err = pcall(vim.lsp.enable, server)
-  if not ok then
-    vim.notify(("LSP: failed to enable '%s': %s"):format(server, err), vim.log.levels.ERROR)
-  end
-end
-
-local ensured = {}
-local function ensure(server)
-  if ensured[server] then
-    return
-  end
-  ensured[server] = true
-
-  local bin = server_bin(server)
-
-  if not bin then
-    enable(server)
-    return
-  end
-
-  if vim.fn.executable(bin) == 1 then
-    enable(server)
-    return
-  end
-
-  local pkg = require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package[server]
-  if not pkg then
-    vim.notify(("LSP: '%s' not on $PATH and has no Mason package mapping"):format(server), vim.log.levels.WARN)
-    return
-  end
-  require("core.mason-fallback").install(pkg, function()
-    enable(server)
-  end)
+-- The Mason package that provides a server's binary (nil if none / unmapped).
+local function mason_pkg(server)
+  return require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package[server]
 end
 
 function M.setup()
   vim.lsp.config("*", { capabilities = capabilities() })
 
-  local ft_map = {}
-  for _, server in ipairs(servers) do
-    local _, filetypes = server_bin(server)
-    for _, ft in ipairs(filetypes or {}) do
-      ft_map[ft] = ft_map[ft] or {}
-      table.insert(ft_map[ft], server)
-    end
-  end
+  -- Native-first: `vim.lsp.enable` owns all the filetype handling for us — it
+  -- registers a single FileType autocmd, gates each server on its own
+  -- `filetypes`, re-checks `executable(cmd[1])` at open time (robust to direnv),
+  -- and sweeps already-loaded buffers. A missing binary is simply skipped.
+  vim.lsp.enable(servers)
 
-  local function ensure_ft(ft)
-    for _, server in ipairs(ft_map[ft] or {}) do
-      ensure(server)
-    end
-  end
-
-  -- FileType-gated: a server is only touched when a buffer of its filetype
-  -- opens ("if and only if functionality is requested"). Re-checking
-  -- executable() at open time is what makes this robust to direnv loading
-  -- $PATH slightly after startup.
+  -- The one thing native does NOT do: install a genuinely-absent tool. When a
+  -- server's filetype opens but its binary isn't on $PATH, install the Mason
+  -- package on demand, then re-`enable` so native starts it. Runs once per
+  -- server. Toolchain-only servers with no Mason package are left to $PATH.
+  local pending = {}
   vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("UserLspEnsure", { clear = true }),
+    group = vim.api.nvim_create_augroup("UserLspMasonFallback", { clear = true }),
     callback = function(ev)
-      ensure_ft(ev.match)
+      for _, server in ipairs(servers) do
+        local cfg = vim.lsp.config[server]
+        local bin = cfg and type(cfg.cmd) == "table" and cfg.cmd[1] or nil
+        local applies = cfg and type(cfg.filetypes) == "table"
+          and vim.tbl_contains(cfg.filetypes, ev.match)
+        if applies and bin and not pending[server] and vim.fn.executable(bin) == 0 then
+          local pkg = mason_pkg(server)
+          if pkg then
+            pending[server] = true
+            require("core.mason-fallback").install(pkg, function()
+              vim.lsp.enable(server) -- re-trigger native start now the binary exists
+            end)
+          end
+        end
+      end
     end,
   })
-
-  -- Sweep already-loaded buffers (handles `nvim main.go`, where FileType has
-  -- already fired before this autocmd was registered).
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(buf) then
-      ensure_ft(vim.bo[buf].filetype)
-    end
-  end
 end
 
 function M.buffer_uses_nix(bufnr)
