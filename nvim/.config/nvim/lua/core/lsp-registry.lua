@@ -41,9 +41,6 @@ local function capabilities()
   return caps
 end
 
--- Resolve the merged config for a server (incl. cmd/filetypes from
--- nvim-lspconfig's bundled lsp/<name>.lua). Returns the bare binary name
--- (cmd[1]) and the filetypes list. bin is nil when cmd is a function.
 local function server_bin(server)
   local cfg = vim.lsp.config[server]
   if not cfg then
@@ -63,7 +60,6 @@ local function enable(server)
   end
 end
 
--- Runs once per server.
 local ensured = {}
 local function ensure(server)
   if ensured[server] then
@@ -73,19 +69,16 @@ local function ensure(server)
 
   local bin = server_bin(server)
 
-  -- No bare binary (function cmd) → assume present, enable.
   if not bin then
     enable(server)
     return
   end
 
-  -- On $PATH (Nix shell or already-Mason-installed) → enable.
   if vim.fn.executable(bin) == 1 then
     enable(server)
     return
   end
 
-  -- Missing → on-demand Mason fallback, then enable.
   local pkg = require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package[server]
   if not pkg then
     vim.notify(("LSP: '%s' not on $PATH and has no Mason package mapping"):format(server), vim.log.levels.WARN)
@@ -99,7 +92,6 @@ end
 function M.setup()
   vim.lsp.config("*", { capabilities = capabilities() })
 
-  -- Build filetype -> { servers } from each server's resolved filetypes.
   local ft_map = {}
   for _, server in ipairs(servers) do
     local _, filetypes = server_bin(server)
@@ -133,6 +125,24 @@ function M.setup()
       ensure_ft(vim.bo[buf].filetype)
     end
   end
+end
+
+function M.buffer_uses_nix(bufnr)
+  bufnr = bufnr or 0
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+    local cmd = client.config and client.config.cmd
+    local bin = type(cmd) == "table" and cmd[1] or nil
+    if bin then
+      local path = vim.fn.exepath(bin)
+      if path == "" then
+        path = bin
+      end
+      if path:lower():find("/nix/", 1, true) then
+        return true
+      end
+    end
+  end
+  return false
 end
 
 return M
