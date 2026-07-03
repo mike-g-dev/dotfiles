@@ -30,8 +30,6 @@ local servers = {
   "rust_analyzer",
 }
 
--- Native defaults merged with cmp_nvim_lsp's capabilities. pcall so the registry
--- does not hard-depend on the completion plugin.
 local function capabilities()
   local caps = vim.lsp.protocol.make_client_capabilities()
   local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -41,24 +39,14 @@ local function capabilities()
   return caps
 end
 
--- The Mason package that provides a server's binary (nil if none / unmapped).
 local function mason_pkg(server)
   return require("mason-lspconfig.mappings").get_mason_map().lspconfig_to_package[server]
 end
 
 function M.setup()
   vim.lsp.config("*", { capabilities = capabilities() })
-
-  -- Native-first: `vim.lsp.enable` owns all the filetype handling for us — it
-  -- registers a single FileType autocmd, gates each server on its own
-  -- `filetypes`, re-checks `executable(cmd[1])` at open time (robust to direnv),
-  -- and sweeps already-loaded buffers. A missing binary is simply skipped.
   vim.lsp.enable(servers)
 
-  -- The one thing native does NOT do: install a genuinely-absent tool. When a
-  -- server's filetype opens but its binary isn't on $PATH, install the Mason
-  -- package on demand, then re-`enable` so native starts it. Runs once per
-  -- server. Toolchain-only servers with no Mason package are left to $PATH.
   local pending = {}
   vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("UserLspMasonFallback", { clear = true }),
@@ -66,8 +54,7 @@ function M.setup()
       for _, server in ipairs(servers) do
         local cfg = vim.lsp.config[server]
         local bin = cfg and type(cfg.cmd) == "table" and cfg.cmd[1] or nil
-        local applies = cfg and type(cfg.filetypes) == "table"
-          and vim.tbl_contains(cfg.filetypes, ev.match)
+        local applies = cfg and type(cfg.filetypes) == "table" and vim.tbl_contains(cfg.filetypes, ev.match)
         if applies and bin and not pending[server] and vim.fn.executable(bin) == 0 then
           local pkg = mason_pkg(server)
           if pkg then
